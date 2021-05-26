@@ -9,8 +9,7 @@ import {
     CHANGE_POINTS,
     CHANGE_AVERAGE,
     CHANGE_AMOUNT,
-    ADD_NEW_USER,
-    SHOW_FORM_ADD_NEW_USER
+    ADD_NEW_USER
 } from "../actions/actionTypes";
 
 const initialState = {
