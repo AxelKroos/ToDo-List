@@ -10,40 +10,13 @@ class Results extends React.Component {
 
     render(props) {
         let counter = 0
-
-        const task = this.props.checkFilter ? this.props.filteredArr.map((task, index) => {
+        let array = this.props.checkFilter ? this.props.filteredArr : this.props.tasks
+        let task
+        task = array.map((task, index) => {
                 let taskStatus
-                {
-                    task.taskStatus ? taskStatus = <p className={classes.done}>Выполнено</p> : taskStatus =
-                        <p className={classes.failed}>Не выполнено</p>
-                }
-                {
-                    task.taskStatus ? counter += 1 : counter = counter
-                }
-
-                return <tr>
-                    <th>{index + 1}</th>
-                    <th onClick={() => this.props.taskStatus(index)} className={classes.taskName}>{task.task}</th>
-                    <th>{task.date}</th>
-                    <th>{taskStatus}</th>
-                    <th className={classes.buttons}>
-                        <a className={`${classes.btn} ${classes.btnChange}`}
-                           onClick={() => this.props.renameTaskShowInput(task, index)}>Редактировать</a>
-                        <a className={`${classes.btn} ${classes.btnDelete}`}
-                           onClick={() => this.props.deleteTask(index)}>Удалить</a>
-                    </th>
-                </tr>
-            })
-            :
-            this.props.tasks.map((task, index) => {
-                let taskStatus
-                {
-                    task.taskStatus ? taskStatus = <p className={classes.done}>Выполнено</p> : taskStatus =
-                        <p className={classes.failed}>Не выполнено</p>
-                }
-                {
-                    task.taskStatus ? counter += 1 : counter = counter
-                }
+                {task.taskStatus ? taskStatus = <p className={classes.done}>Выполнено</p> : taskStatus =
+                        <p className={classes.failed}>Не выполнено</p>}
+                {task.taskStatus ? counter += 1 : counter = counter}
 
                 return <tr>
                     <th>{index + 1}</th>
