@@ -23,7 +23,7 @@ class Results extends React.Component {
 
                 return <tr>
                     <th>{index + 1}</th>
-                    <th onClick={() => this.props.taskStatus(index)} style={{cursor: 'pointer'}}>{task.task}</th>
+                    <th onClick={() => this.props.taskStatus(index)} className={classes.taskName}>{task.task}</th>
                     <th>{task.date}</th>
                     <th>{taskStatus}</th>
                     <th className={classes.buttons}>
