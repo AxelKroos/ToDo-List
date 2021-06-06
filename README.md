@@ -1,3 +1,15 @@
+# ToDo List :pencil2: :memo: :link:
+
+##Стек: React+Redux
+
+![SksXwArI](https://user-images.githubusercontent.com/79835478/120933383-96df2300-c702-11eb-98e5-9bc8454c3735.jpg)
+
+###Возможности:
+- :heavy_check_mark: Добавлять новую задачу
+- :heavy_check_mark: Удалять задачу
+- :heavy_check_mark: Редактировать задачу
+- :heavy_check_mark: Фильтр по состоянию задачи
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
