@@ -1,90 +1,55 @@
-import {
-    DELETE_USER,
-    RENAME_USER_SHOW_INPUT,
-    RENAME_USER_HIDE_INPUT,
-    CHANGE_FIRSTNAME,
-    CHANGE_LASTNAME,
-    CHANGE_ZIP,
-    CHANGE_BIRTHDAY,
-    CHANGE_POINTS,
-    CHANGE_AVERAGE,
-    CHANGE_AMOUNT,
-    ADD_NEW_USER
-} from "./actionTypes";
-
-export function deleteUser(index) {
+export function deleteTask(index) {
     return {
-        type: 'DELETE_USER',
+        type: 'DELETE_TASK',
         payload: index
     }
 }
 
-export function renameUserShowInput(user, index) {
+export function renameTaskShowInput(user, index) {
     return {
-        type: 'RENAME_USER_SHOW_INPUT',
+        type: 'RENAME_TASK_SHOW_INPUT',
         user: user,
         index: index
     }
 }
 
-export function renameUserHideInput() {
+export function renameTaskHideInput(index) {
     return {
-        type: 'RENAME_USER_HIDE_INPUT'
+        type: 'RENAME_TASK_HIDE_INPUT',
+        payload: index
     }
 }
 
-export function changeFirstName(value) {
+export function changeTask(value) {
     return {
-        type: 'CHANGE_FIRSTNAME',
+        type: 'CHANGE_TASK',
         payload: value
     }
 }
 
-export function changeLastName(value) {
+export function changeDate(value) {
     return {
-        type: 'CHANGE_LASTNAME',
+        type: 'CHANGE_DATE',
         payload: value
     }
 }
 
-export function changeZip(value) {
+export function addNewTask() {
     return {
-        type: 'CHANGE_ZIP',
-        payload: value
+        type: 'ADD_NEW_TASK'
     }
 }
 
-export function changeBirthday(value) {
+export function taskStatus(index) {
     return {
-        type: 'CHANGE_BIRTHDAY',
-        payload: value
+        type: 'TASK_STATUS',
+        payload: index
     }
 }
 
-export function changePoints(value) {
+export function sortTusks(value) {
     return {
-        type: 'CHANGE_POINTS',
-        payload: value
-    }
-}
-
-export function changeAverage(value) {
-    return {
-        type: 'CHANGE_AVERAGE',
-        payload: value
-    }
-}
-
-export function changeAmount(value) {
-    return {
-        type: 'CHANGE_AMOUNT',
-        payload: value
-    }
-}
-
-export function addNewUser(value) {
-    return {
-        type: 'ADD_NEW_USER',
+        type: 'SORT_TUSKS',
         payload: value
     }
 }

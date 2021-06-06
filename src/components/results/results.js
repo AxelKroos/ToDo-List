@@ -1,56 +1,101 @@
 import React from "react";
 import {connect} from "react-redux";
-import {deleteUser, renameUserShowInput} from "../../store/actions/usersActions";
+import {deleteTask, renameTaskShowInput, taskStatus, sortTusks} from "../../store/actions/usersActions";
+import classes from './results.module.css'
+import Inputs from "./inputs/inputs";
+import NewTask from "./newTask/newTask";
+import Filter from "./filter/filter";
 
 class Results extends React.Component {
-    render() {
 
-        const user = this.props.users.map((user, index) => {
-            return <tr>
-                <th>{user.firstName}</th>
-                <th>{user.lastName}</th>
-                <th>{user.zip}</th>
-                <th>{user.birthday}</th>
-                <th>{user.points}</th>
-                <th>{user.average}</th>
-                <th>{user.amount}</th>
-                <button onClick={() => this.props.renameUserShowInput(user, index)}>Change</button>
-                <button onClick={() => this.props.deleteUser(index)}>Delete</button>
-            </tr>
-        })
+    render(props) {
+        let counter = 0
+
+        const task = this.props.checkFilter ? this.props.filteredArr.map((task, index) => {
+                let taskStatus
+                {
+                    task.taskStatus ? taskStatus = <p className={classes.done}>Выполнено</p> : taskStatus =
+                        <p className={classes.failed}>Не выполнено</p>
+                }
+                {
+                    task.taskStatus ? counter += 1 : counter = counter
+                }
+
+                return <tr>
+                    <th>{index + 1}</th>
+                    <th onClick={() => this.props.taskStatus(index)} style={{cursor: 'pointer'}}>{task.task}</th>
+                    <th>{task.date}</th>
+                    <th>{taskStatus}</th>
+                    <th className={classes.buttons}>
+                        <a className={`${classes.btn} ${classes.btnChange}`}
+                           onClick={() => this.props.renameTaskShowInput(task, index)}>Редактировать</a>
+                        <a className={`${classes.btn} ${classes.btnDelete}`}
+                           onClick={() => this.props.deleteTask(index)}>Удалить</a>
+                    </th>
+                </tr>
+            })
+            :
+            this.props.tasks.map((task, index) => {
+                let taskStatus
+                {
+                    task.taskStatus ? taskStatus = <p className={classes.done}>Выполнено</p> : taskStatus =
+                        <p className={classes.failed}>Не выполнено</p>
+                }
+                {
+                    task.taskStatus ? counter += 1 : counter = counter
+                }
+
+                return <tr>
+                    <th>{index + 1}</th>
+                    <th onClick={() => this.props.taskStatus(index)} className={classes.taskName}>{task.task}</th>
+                    <th>{task.date}</th>
+                    <th>{taskStatus}</th>
+                    <th className={classes.buttons}>
+                        <a className={`${classes.btn} ${classes.btnChange}`}
+                           onClick={() => this.props.renameTaskShowInput(task, index)}>Редактировать</a>
+                        <a className={`${classes.btn} ${classes.btnDelete}`}
+                           onClick={() => this.props.deleteTask(index)}>Удалить</a>
+                    </th>
+                </tr>
+            })
 
         return <div>
-            <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>ZIP</th>
-                <th>Birthday</th>
-                <th>Points</th>
-                <th>Average</th>
-                <th>Amount</th>
-            </tr>
-            </thead>
-            <tbody>{user}</tbody>
+            {counter != 0 ? <p className={classes.counterTitle}>Выполнено задач: {counter}</p> :
+                <p className={classes.counterTitle}>Нет выполненных задач</p>}
+            {this.props.show ? <Inputs/> : <NewTask/>}
+            <Filter sortTusks={this.props.sortTusks}/>
+            <table>
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Задача</th>
+                    <th>Дата</th>
+                    <th>Статус</th>
+                </tr>
+                </thead>
+                <tbody>{task}</tbody>
+            </table>
         </div>
+
 
     }
 }
 
 function mapStateToProps(state) {
     return {
-        users: state.usersData.usersData
+        tasks: state.tasksData.tasksData,
+        filteredArr: state.tasksData.filteredArr,
+        checkFilter: state.tasksData.checkFilter,
+        show: state.tasksData.showInput
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        renameUserShowInput: (user, index) => {
-            dispatch(renameUserShowInput(user, index))
-        },
-        deleteUser: (index) => {
-            dispatch(deleteUser(index))
-        }
+        renameTaskShowInput: (user, index) => dispatch(renameTaskShowInput(user, index)),
+        deleteTask: (index) => dispatch(deleteTask(index)),
+        taskStatus: (index) => dispatch(taskStatus(index)),
+        sortTusks: (value) => dispatch(sortTusks(value))
     }
 }
 

@@ -1,0 +1,11 @@
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: -2px;
+}
+
+.newTask input:hover {
+    outline: none;
+    box-shadow: -5px -5px 13px 0px rgba(51, 149, 132, 0.44);
+    transition: .2s;
+}

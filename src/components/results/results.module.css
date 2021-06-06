@@ -1,0 +1,79 @@
+table {
+    width: 50%;
+    border-collapse: collapse;
+    margin: 50px auto;
+}
+
+table td {
+    padding: 12px 16px;
+}
+
+table thead tr {
+    font-weight: bold;
+}
+
+table tr {
+    border-bottom: 1px solid rgba(220, 224, 234, 0.48);
+}
+
+.done {
+    color: green;
+    font-size: 20px;
+}
+
+.failed {
+    color: red;
+    font-size: 20px;
+}
+
+.counterTitle {
+    position: relative;
+    font-size: 26px;
+}
+
+.buttons button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.btn {
+    cursor: pointer;
+    flex: 1 1 auto;
+    margin: 10px;
+    padding: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px rgba(238, 238, 238, 0.34);
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-position: right center;
+}
+
+.btnChange {
+    background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #69d564 100%);
+}
+
+.btnDelete {
+    background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #e52828 100%);
+}
+
+.taskName {
+    cursor: pointer;
+}
+
+.taskName:hover {
+    color: #61dafb;
+    transition: .2s;
+}
+
+

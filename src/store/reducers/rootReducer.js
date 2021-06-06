@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux'
 
-import usersData from "./userReducer";
+import tasksData from "./reducer";
 
 export default combineReducers({
-    usersData
+    tasksData: tasksData
 })
